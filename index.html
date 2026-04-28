@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartGuard | Child Safety & Health Monitoring System</title>
+<title>SafePlay | Child Safety & Health Monitoring System</title>
 <meta name="description" content="Smartwatch-Based Child Safety & Health Monitoring System — Research Project 25-26J-276, SLIIT Sri Lanka">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -119,54 +119,63 @@ p { text-wrap: pretty; }
  NAVIGATION
  ============================================================ */
 .navbar {
- position: sticky; top: 0; z-index: 100;
- display: flex; align-items: center; justify-content: space-between;
- padding: var(--space-4) var(--space-8);
- background: rgba(240,244,248,0.88);
- backdrop-filter: blur(20px) saturate(180%);
- -webkit-backdrop-filter: blur(20px) saturate(180%);
- border-bottom: 1px solid var(--color-divider);
- transition: background var(--transition);
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(240,244,248,0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--color-divider);
+  transition: background var(--transition);
 }
 .navbar.scrolled { background: rgba(240,244,248,0.97); }
 
+.navbar-inner {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%;
+  padding: var(--space-4) var(--space-8);
+}
+
 .nav-logo {
- display: flex; align-items: center; gap: var(--space-3);
- text-decoration: none; color: var(--color-text);
- font-family: var(--font-display); font-weight: 700;
- font-size: var(--text-lg); letter-spacing: -0.02em;
+  display: flex; align-items: center; gap: var(--space-3);
+  text-decoration: none; color: var(--color-text);
+  font-family: var(--font-display); font-weight: 700;
+  font-size: var(--text-lg); letter-spacing: -0.02em;
 }
 .nav-logo-icon {
- width: 36px; height: 36px;
- background: linear-gradient(135deg, var(--color-primary), var(--color-accent2));
- border-radius: var(--radius-lg);
- display: flex; align-items: center; justify-content: center;
- flex-shrink: 0;
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent2));
+  border-radius: var(--radius-lg);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
 }
 .logo-text span { color: var(--color-primary); }
 
 .nav-links {
- display: flex; align-items: center; gap: var(--space-1);
+  display: flex; align-items: center; gap: var(--space-1);
 }
 .nav-links a {
- text-decoration: none;
- color: var(--color-text-muted);
- font-size: var(--text-sm); font-weight: 500;
- padding: var(--space-2) var(--space-3);
- border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm); font-weight: 500;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
 }
 .nav-links a:hover { color: var(--color-text); background: rgba(0,0,0,0.05); }
-.nav-links a.active { color: var(--color-primary); }
+.nav-links a.active,
+.nav-links a[aria-current="page"] {
+  color: var(--color-primary);
+}
 
 .nav-cta {
- display: flex; align-items: center; gap: var(--space-3);
+  display: flex; align-items: center; gap: var(--space-3);
 }
 .badge-id {
- font-size: var(--text-xs); color: var(--color-text-faint);
- border: 1px solid var(--color-border);
- border-radius: var(--radius-full);
- padding: 2px var(--space-3);
- font-family: var(--font-display);
+  font-size: var(--text-xs); color: var(--color-text-faint);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 2px var(--space-3);
+  font-family: var(--font-display);
 }
 .hamburger { display: none; flex-direction: column; gap: 5px; padding: var(--space-2); }
 .hamburger span { width: 22px; height: 2px; background: var(--color-text); border-radius: 2px; transition: transform var(--transition), opacity var(--transition); }
@@ -847,7 +856,8 @@ footer {
  NAVBAR
  ============================================================ -->
 <nav class="navbar" id="navbar" aria-label="Main navigation">
- <a href="#home" class="nav-logo" aria-label="SmartGuard Home">
+  <div class="navbar-inner">
+ <a href="#home" class="nav-logo" aria-label="SafePlay Home">
  <div class="nav-logo-icon" aria-hidden="true">
  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
  <rect x="5" y="1" width="12" height="20" rx="4" stroke="white" stroke-width="1.5"/>
@@ -856,7 +866,7 @@ footer {
  <path d="M3 6h2M17 6h2M3 16h2M17 16h2" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
  </svg>
  </div>
- <span class="logo-text">Smart<span>Guard</span></span>
+ <span class="logo-text">Safe<span>Play</span></span>
  </a>
  <ul class="nav-links" id="navLinks" role="list">
  <li><a href="#home" class="active">Home</a></li>
@@ -868,10 +878,11 @@ footer {
  <li><a href="#contact">Contact</a></li>
  </ul>
  <div class="nav-cta">
- <span class="badge-id">25-26J-276</span>
+ <!-- <span class="badge-id">25-26J-276</span> -->
  <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
  <span></span><span></span><span></span>
  </button>
+ </div>
  </div>
 </nav>
 
@@ -1362,7 +1373,7 @@ footer {
  <header class="section-header reveal">
  <div class="section-tag" aria-hidden="true">04 — Documents</div>
  <h2 class="section-title" id="documents-title">Research Documents & Submissions</h2>
- <p class="section-desc">Download all research deliverables, reports, and checklists for the SmartGuard project.</p>
+ <p class="section-desc">Download all research deliverables, reports, and checklists for the SafePlay project.</p>
  </header>
 
     <div class="doc-cards-grid reveal">
@@ -1695,7 +1706,7 @@ footer {
       <div class="footer-brand-row">
         <div class="brand-name">Smart<span style="color:var(--color-primary)">Guard</span></div>
       </div>
-      <p class="footer-copy">© 2025 SmartGuard Research Team · SLIIT, Sri Lanka. All rights reserved.</p>
+      <p class="footer-copy">© 2025 SafePlay Research Team · SLIIT, Sri Lanka. All rights reserved.</p>
     </div>
     <nav class="footer-nav-horizontal" aria-label="Footer navigation">
       <a href="#home">Home</a>
@@ -1716,22 +1727,85 @@ footer {
 // Navbar scroll effect + active link
 (function(){
  const navbar = document.getElementById('navbar');
- const sections = document.querySelectorAll('section[id]');
- const navLinks = document.querySelectorAll('.nav-links a');
+ const sections = Array.from(document.querySelectorAll('section[id]'));
+ const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+ if (!navbar || !sections.length || !navLinks.length) return;
+ let activeId = '';
+ let ticking = false;
 
- window.addEventListener('scroll', function(){
- if (window.scrollY > 60) navbar.classList.add('scrolled');
- else navbar.classList.remove('scrolled');
+ function setActive(id) {
+  if (!id || id === activeId) return;
+  activeId = id;
+  navLinks.forEach(function(link) {
+   const isActive = link.getAttribute('href') === '#' + id;
+   if (isActive) {
+    link.classList.add('active');
+    link.setAttribute('aria-current', 'page');
+   } else {
+    link.classList.remove('active');
+    link.removeAttribute('aria-current');
+   }
+  });
+ }
 
- let current = '';
- sections.forEach(s => {
- if (window.scrollY >= s.offsetTop - 100) current = s.id;
+ function getActiveSectionByScroll() {
+  const navHeight = navbar.offsetHeight || 0;
+  const probeLine = navHeight + 24;
+  let current = sections[0].id;
+
+  sections.forEach(function(section) {
+   if (section.getBoundingClientRect().top <= probeLine) current = section.id;
+  });
+
+  return current;
+ }
+
+ function syncNavbarState() {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  setActive(getActiveSectionByScroll());
+  ticking = false;
+ }
+
+ function requestSync() {
+  if (ticking) return;
+  ticking = true;
+  window.requestAnimationFrame(syncNavbarState);
+ }
+
+ navLinks.forEach(function(link) {
+  link.addEventListener('click', function() {
+   const targetId = link.getAttribute('href').slice(1);
+   setActive(targetId);
+  });
  });
- navLinks.forEach(a => {
- a.classList.remove('active');
- if (a.getAttribute('href') === '#' + current) a.classList.add('active');
- });
- }, { passive: true });
+
+ if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(function(entries) {
+   const visibleEntries = entries
+    .filter(function(entry) { return entry.isIntersecting; })
+    .sort(function(a, b) {
+     return b.intersectionRatio - a.intersectionRatio || a.boundingClientRect.top - b.boundingClientRect.top;
+    });
+
+   if (visibleEntries.length) {
+    setActive(visibleEntries[0].target.id);
+    return;
+   }
+
+   requestSync();
+  }, {
+   rootMargin: '-80px 0px -55% 0px',
+   threshold: [0.15, 0.3, 0.5, 0.7]
+  });
+
+  sections.forEach(function(section) {
+   observer.observe(section);
+  });
+ }
+
+ window.addEventListener('scroll', requestSync, { passive: true });
+ window.addEventListener('resize', requestSync);
+ syncNavbarState();
 })();
 
 // Hamburger menu
@@ -1756,24 +1830,22 @@ footer {
 
 // Scroll reveal with IntersectionObserver — progressive enhancement
 (function(){
- // Only animate if motion is OK and IntersectionObserver is available
- const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- if (!('IntersectionObserver' in window) || prefersReduced) return;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!('IntersectionObserver' in window) || prefersReduced) return;
 
- const reveals = document.querySelectorAll('.reveal');
- // First mark all as animated (hidden), then reveal on scroll
- reveals.forEach(el => el.classList.add('animated'));
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach(el => el.classList.add('animated'));
 
- const obs = new IntersectionObserver(function(entries){
- entries.forEach(e => {
- if (e.isIntersecting) {
- e.target.classList.add('visible');
- obs.unobserve(e.target);
- }
- });
- }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  const obs = new IntersectionObserver(function(entries){
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
- reveals.forEach(el => obs.observe(el));
+  reveals.forEach(el => obs.observe(el));
 })();
 
 // Smartwatch component tile live animations
@@ -1823,7 +1895,7 @@ function handleFormSubmit(e) {
  btn.disabled = false;
  btn.textContent = 'Send Message →';
  status.style.color = 'var(--color-success)';
- status.textContent = ' Message received. We'll get back to you soon!';
+ status.textContent = " Message received. We'll get back to you soon!";
  e.target.reset();
  setTimeout(function(){ status.textContent = ''; }, 5000);
  }, 1200);
