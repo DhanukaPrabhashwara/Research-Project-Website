@@ -38,13 +38,13 @@
 
 /* LIGHT THEME */
 [data-theme="dark"], :root {
- --color-bg: #c8d3e0;
- --color-surface: #ffffff;
- --color-surface-2: #f8fafc;
- --color-surface-offset: #d4dde8;
- --color-surface-glass: rgba(255,255,255,0.75);
- --color-divider: rgba(0,0,0,0.07);
- --color-border: rgba(0,0,0,0.09);
+  --color-bg: #e6eff6;
+  --color-surface: #ffffff;
+  --color-surface-2: #f2f7fb;
+  --color-surface-offset: #daeaf4;
+  --color-surface-glass: rgba(255,255,255,0.85);
+  --color-divider: rgba(0,0,0,0.06);
+  --color-border: rgba(0,0,0,0.08);
 
  --color-text: #0f172a;
  --color-text-muted: #475569;
@@ -714,11 +714,11 @@ section { padding: clamp(var(--space-16), 8vw, var(--space-24)) var(--space-8); 
  CONTACT SECTION
  ============================================================ */
 #contact { background: var(--color-bg); }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: stretch; }
 .contact-info h3 { font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-4); }
 .contact-info p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-8); }
 .contact-detail {
- display: flex; gap: var(--space-4); margin-bottom: var(--space-5); align-items: flex-start;
+  display: flex; gap: var(--space-4); margin-bottom: var(--space-5); align-items: flex-start;
 }
 .contact-detail .cd-icon { font-size: 1.2rem; flex-shrink: 0; padding-top: 2px; }
 .contact-detail .cd-label { font-size: var(--text-xs); color: var(--color-text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
@@ -726,28 +726,31 @@ section { padding: clamp(var(--space-16), 8vw, var(--space-24)) var(--space-8); 
 .contact-detail a { color: var(--color-primary); text-decoration: none; }
 .contact-detail a:hover { text-decoration: underline; }
 
-.contact-form { padding: var(--space-8); }
+.contact-form { padding: var(--space-8); display: flex; flex-direction: column; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
 .form-group { margin-bottom: var(--space-5); }
+.form-group-grow { flex: 1; display: flex; flex-direction: column; margin-bottom: var(--space-5); }
+.form-group-grow .form-textarea { flex: 1; resize: none; min-height: 100px; }
 .form-label { display: block; font-size: var(--text-xs); font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: var(--space-2); }
 .form-input, .form-textarea {
- width: 100%; padding: var(--space-3) var(--space-4);
- background: rgba(255,255,255,0.9); border: 1px solid var(--color-border);
- border-radius: var(--radius-lg); color: var(--color-text); font: inherit;
- font-size: var(--text-sm); transition: border-color var(--transition), box-shadow var(--transition);
+  width: 100%; padding: var(--space-3) var(--space-4);
+  background: rgba(255,255,255,0.9); border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); color: var(--color-text); font: inherit;
+  font-size: var(--text-sm); transition: border-color var(--transition), box-shadow var(--transition);
 }
 .form-input::placeholder, .form-textarea::placeholder { color: var(--color-text-faint); }
 .form-input:focus, .form-textarea:focus {
- outline: none; border-color: var(--color-primary);
- box-shadow: 0 0 0 3px rgba(0,212,200,0.12);
+  outline: none; border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0,212,200,0.12);
 }
-.form-textarea { resize: vertical; min-height: 120px; }
+.form-textarea { resize: none; min-height: 100px; }
 .form-submit {
- width: 100%; padding: var(--space-4); border-radius: var(--radius-lg);
- background: linear-gradient(135deg, var(--color-primary), var(--color-accent2));
- color: #fff; font-weight: 700; font-size: var(--text-sm); font-family: var(--font-display);
- border: none; cursor: pointer; letter-spacing: 0.02em;
- box-shadow: 0 4px 20px rgba(0,212,200,0.25);
- transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+  width: 100%; padding: var(--space-4); border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent2));
+  color: #fff; font-weight: 700; font-size: var(--text-sm); font-family: var(--font-display);
+  border: none; cursor: pointer; letter-spacing: 0.02em;
+  box-shadow: 0 4px 20px rgba(0,212,200,0.25);
+  transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 .form-submit:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 6px 28px rgba(0,212,200,0.35); }
 
@@ -799,7 +802,6 @@ footer {
  .hero-visual { margin-top: var(--space-8); }
  .fc-gps { right: -40px; }
  .fc-alert { left: -50px; }
- .contact-grid { grid-template-columns: 1fr; }
  .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
  .supervisor-card { grid-template-columns: 1fr; text-align: center; }
  .supervisor-card .sup-avatar { margin: 0 auto var(--space-4); }
@@ -824,6 +826,8 @@ footer {
  .timeline::before { left: 18px; }
  .timeline-dot-wrap { width: 38px; }
  .timeline-content { padding: var(--space-5) var(--space-5); }
+ .contact-grid { grid-template-columns: 1fr; }
+ .form-row { grid-template-columns: 1fr; }
  .footer-bottom { flex-direction: column; text-align: center; }
 }
 @media (max-width: 480px) {
@@ -877,7 +881,7 @@ footer {
 <section id="home" aria-labelledby="hero-title">
  <div class="hero-grid">
  <div class="hero-text">
- <div class="hero-badge" role="text">Research Project · SLIIT IT4010</div>
+ <!-- <div class="hero-badge" role="text">Research Project · SLIIT IT4010</div> -->
  <h1 class="hero-title" id="hero-title">
  <span class="highlight">Smartwatch‑Based</span><br>
  Child Safety &amp;<br>Health Monitoring
@@ -908,10 +912,10 @@ footer {
  <span class="label">Year</span>
  <span class="value">2025 / 2026</span>
  </div>
- <div class="hero-meta-item" role="listitem">
+ <!-- <div class="hero-meta-item" role="listitem">
  <span class="label">Team Size</span>
  <span class="value">4 Members</span>
- </div>
+ </div> -->
  </div>
  </div>
 
@@ -1063,7 +1067,7 @@ footer {
 
  <!-- Background + Research Gap -->
  <div class="gap-card glass-card reveal">
- <div class="domain-card-icon icon-teal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#dc2626"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+ <!-- <div class="domain-card-icon icon-teal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#dc2626"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div> -->
  <h3 style="font-size:var(--text-lg);font-weight:700;margin-bottom:var(--space-4);">Background</h3>
  <p style="color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.7;max-width:80ch;">
  Child safety in modern environments demands intelligent, non-intrusive monitoring systems. Parents and guardians increasingly rely on digital tools, yet existing solutions lack integration between physiological health monitoring, location awareness, and behavioral threat detection. The convergence of wearable technology, edge computing, and machine learning creates an unprecedented opportunity to deliver a unified child safety platform through an everyday smartwatch.
@@ -1079,12 +1083,12 @@ footer {
  <!-- Research Problem & Objectives -->
  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-bottom:var(--space-6);" class="reveal">
  <div class="glass-card domain-card">
- <div class="domain-card-icon icon-red"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#dc2626"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+ <!-- <div class="domain-card-icon icon-red"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#dc2626"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div> -->
  <h3>Research Problem</h3>
  <p>How can a smartwatch-based system effectively integrate multi-modal health and safety monitoring — including dehydration detection, geospatial awareness, audio-based threat identification, and psychological health coaching — while preserving children's privacy and maintaining real-time responsiveness?</p>
  </div>
  <div class="glass-card domain-card">
- <div class="domain-card-icon icon-green"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#dc2626"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+ <!-- <div class="domain-card-icon icon-green"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#dc2626"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div> -->
  <h3>Research Objectives</h3>
  <div class="objectives-list" style="margin-top:var(--space-2);">
  <div class="obj-item"><div class="obj-num">1</div><p>Develop a pediatric dehydration early-warning algorithm using biomarker data from smartwatch sensors.</p></div>
@@ -1098,7 +1102,7 @@ footer {
  <!-- Methodology + Technologies -->
  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);" class="reveal reveal-delay-1">
  <div class="glass-card domain-card">
- <div class="domain-card-icon icon-blue"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#dc2626"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+ <!-- <div class="domain-card-icon icon-blue"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#dc2626"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div> -->
  <h3>Methodology</h3>
  <p style="margin-bottom:var(--space-4);">A design science research methodology combining literature synthesis, prototype iteration, and empirical validation with simulated and real-world child safety scenarios.</p>
  <ul style="color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.8;padding-left:var(--space-4);list-style:disc;">
@@ -1110,7 +1114,7 @@ footer {
  </ul>
  </div>
  <div class="glass-card domain-card">
- <div class="domain-card-icon icon-purple"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#7c3aed"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+ <!-- <div class="domain-card-icon icon-purple"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#7c3aed"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div> -->
  <h3>Technologies Used</h3>
  <p style="margin-bottom:var(--space-5);">A modern full-stack IoT and ML technology stack enabling real-time processing, mobile alerts, and secure cloud synchronisation.</p>
  <div class="tech-grid">
@@ -1134,12 +1138,12 @@ footer {
  <h3 style="font-size:var(--text-lg);font-weight:700;margin-top:var(--space-12);margin-bottom:var(--space-6);color:var(--color-text-muted);">Individual Research Components</h3>
  <div class="domain-grid">
  <div class="glass-card domain-card reveal">
- <div class="domain-card-icon icon-blue"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#dc2626"><path d="M12 2C12 2 5 10 5 15a7 7 0 0014 0C19 10 12 2 12 2z"/></svg></div>
+ <div class="domain-card-icon icon-blue"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#4f61fc"><path d="M12 2C12 2 5 10 5 15a7 7 0 0014 0C19 10 12 2 12 2z"/></svg></div>
  <h3>Pediatric Dehydration Early-Warning</h3>
  <p>Machine learning model analysing heart rate variability, skin conductance, and activity data to predict dehydration onset in children before clinical signs appear. Real-time alerts to parent mobile app.</p>
  </div>
  <div class="glass-card domain-card reveal reveal-delay-1">
- <div class="domain-card-icon icon-teal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#dc2626"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+ <div class="domain-card-icon icon-teal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#12b6ae"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
  <h3>Adaptive Geo-Fencing & Location Tracking</h3>
  <p>Context-aware geospatial monitoring that dynamically adjusts safe-zone boundaries based on time-of-day, school schedules, and known behavioural patterns — reducing false alerts for parents.</p>
  </div>
@@ -1149,7 +1153,7 @@ footer {
  <p>On-device audio classification using federated learning to identify threatening voice patterns and stranger interactions, without transmitting raw audio to the cloud — preserving child privacy.</p>
  </div>
  <div class="glass-card domain-card reveal reveal-delay-3">
- <div class="domain-card-icon icon-green"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#dc2626"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+ <div class="domain-card-icon icon-green"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#12b6ae"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
  <h3>Anxiety-Aware Safety & Health Coaching</h3>
  <p>Adaptive coaching engine that detects stress and anxiety biomarkers, delivering contextual safety reminders, breathing exercises, and hydration nudges tailored to the child's current state.</p>
  </div>
@@ -1628,42 +1632,28 @@ footer {
  <header class="section-header reveal">
  <div class="section-tag" aria-hidden="true">07 — Contact</div>
  <h2 class="section-title" id="contact-title">Get In Touch</h2>
- <p class="section-desc">Have questions about our research? Reach out to the team or our supervisor.</p>
+ <!-- <p class="section-desc">Have questions about our research? Reach out to the team or our supervisor.</p> -->
  </header>
  <div class="contact-grid">
  <div class="contact-info reveal">
  <h3>Contact the Research Team</h3>
  <p>We welcome inquiries from researchers, educators, and industry professionals interested in our work on child safety, wearable IoT, and machine learning.</p>
  <div class="contact-detail">
- <div class="cd-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-primary)"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+ <!-- <div class="cd-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-primary)"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div> -->
  <div>
  <div class="cd-label">Institution</div>
  <div class="cd-val">Sri Lanka Institute of Information Technology (SLIIT)</div>
  </div>
  </div>
  <div class="contact-detail">
- <div class="cd-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-primary)"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+ <!-- <div class="cd-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-primary)"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div> -->
  <div>
  <div class="cd-label">Location</div>
  <div class="cd-val">New Kandy Road, Malabe, Sri Lanka</div>
  </div>
  </div>
  <div class="contact-detail">
- <div class="cd-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-primary)"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
- <div>
- <div class="cd-label">Module</div>
- <div class="cd-val">IT4010 — Research Project (2025/2026)</div>
- </div>
- </div>
- <div class="contact-detail">
- <div class="cd-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-primary)"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
- <div>
- <div class="cd-label">Supervisor Email</div>
- <div class="cd-val"><a href="mailto:ishara.w@sliit.lk">ishara.w@sliit.lk</a></div>
- </div>
- </div>
- <div class="contact-detail">
- <div class="cd-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-primary)"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg></div>
+ <!-- <div class="cd-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-primary)"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg></div> -->
  <div>
  <div class="cd-label">Project ID</div>
  <div class="cd-val">25-26J-276</div>
@@ -1671,25 +1661,27 @@ footer {
  </div>
  </div>
  <form class="contact-form glass-card reveal reveal-delay-1" onsubmit="handleFormSubmit(event)" novalidate>
- <div class="form-group">
- <label for="contact-name" class="form-label">Your Name</label>
- <input type="text" id="contact-name" name="name" class="form-input" placeholder="Dr. Jane Smith" required>
- </div>
- <div class="form-group">
- <label for="contact-email" class="form-label">Email Address</label>
- <input type="email" id="contact-email" name="email" class="form-input" placeholder="jane@university.edu" required>
- </div>
- <div class="form-group">
- <label for="contact-subject" class="form-label">Subject</label>
- <input type="text" id="contact-subject" name="subject" class="form-input" placeholder="Research Collaboration">
- </div>
- <div class="form-group">
- <label for="contact-message" class="form-label">Message</label>
- <textarea id="contact-message" name="message" class="form-textarea" placeholder="I'm interested in your research on..." required></textarea>
- </div>
- <button type="submit" class="form-submit" id="formSubmitBtn">Send Message →</button>
- <div id="formStatus" style="margin-top:var(--space-3);font-size:var(--text-xs);text-align:center;color:var(--color-text-faint);"></div>
- </form>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="contact-name" class="form-label">Name</label>
+      <input type="text" id="contact-name" name="name" class="form-input" placeholder="Your name" required>
+    </div>
+    <div class="form-group">
+      <label for="contact-email" class="form-label">Email</label>
+      <input type="email" id="contact-email" name="email" class="form-input" placeholder="your@email.com" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="contact-subject" class="form-label">Subject</label>
+    <input type="text" id="contact-subject" name="subject" class="form-input" placeholder="Message subject">
+  </div>
+  <div class="form-group form-group-grow">
+    <label for="contact-message" class="form-label">Message</label>
+    <textarea id="contact-message" name="message" class="form-textarea" placeholder="Write your message..." required></textarea>
+  </div>
+  <button type="submit" class="form-submit" id="formSubmitBtn">Send Message</button>
+  <div id="formStatus" style="margin-top:var(--space-3);font-size:var(--text-xs);text-align:center;color:var(--color-text-faint);"></div>
+</form>
  </div>
  </div>
 </section>
